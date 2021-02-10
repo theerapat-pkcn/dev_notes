@@ -12,7 +12,6 @@
         docker exec -it <container_id_or_name> /bin/bash
 
 
-
 # Note;
 # container_id = id for container
 # container_name = name that you want for this container

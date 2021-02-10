@@ -1,8 +1,35 @@
-#Basic command
+# Basic command
 
-#Check os version
+# Files
+    # Create folder
+        mkdir <folder_name>
+    # Remove file
+        rm <file_name>
+
+# Check os version
     cat /etc/os-release
 
-#Update and upgrade repository
-    #Debian, Ubuntu
+# Update and upgrade repository
+    # Debian, Ubuntu
         apt-get update && apt-get upgrade
+
+# Install repository
+    # Debian, Ubuntu Example
+        apt-get install tree
+        apt-get install curl
+        apt-get install vim
+
+# Curl
+    # Use curl to download a file
+        curl -o <file_name>.<file_type> <file_urls>
+
+# Vim
+    # Open txt file
+        vim <file_name>.txt
+    # Basic command to edit text using vim
+        #Insert
+            i
+        #save and quit
+            esc-->:wq
+        #quit
+            esc-->:q
