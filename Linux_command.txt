@@ -1,0 +1,4 @@
+#Basic command
+
+#Check os version
+    cat /etc/os-release

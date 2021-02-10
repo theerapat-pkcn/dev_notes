@@ -1,4 +1,13 @@
-#Run a container
+# Run a container
     docker run --rm --name <container_name> -it <image_name>
-        # container_name = name that you want for this container
-        # image_name = image that you want to run
+# Run a container in background with -d
+    docker run --rm -d --name <container_name> -it <image_name> 
+        
+
+# Run command shell in a container
+    docker exec -it <container_id_or_name> /bin/bash
+
+# Note;
+# container_id = id for container
+# container_name = name that you want for this container
+# image_name = image that you want to run
