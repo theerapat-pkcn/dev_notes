@@ -3,6 +3,8 @@
         docker run --rm --name <container_name> -it <image_name>
     # Run in background
         docker run --rm -d --name <container_name> -it <image_name> 
+    # Run MySql image
+        docker run --rm -d --name <container_name> -p <port_you_need>:3306 -e MYSQL_ROOT_PASSWORD=<root_password> <image_name> 
 
 # Stop a container
     docker stop <container_id_or_name>
@@ -10,6 +12,7 @@
 # Run command shell in a container
     # Debian, Ubuntu
         docker exec -it <container_id_or_name> /bin/bash
+        docker exec -it <container_id_or_name> bash
 
 
 # Note;

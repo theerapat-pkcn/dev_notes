@@ -9,6 +9,12 @@
 # Check os version
     cat /etc/os-release
 
+# Check program installed
+    which <program_name or command_name>
+    # Example
+        which mysql 
+    # or go in to folder /usr/bin/<your_program> see if exist
+
 # Update and upgrade repository
     # Debian, Ubuntu
         apt-get update && apt-get upgrade
@@ -33,3 +39,17 @@
             esc-->:wq
         #quit
             esc-->:q
+
+# MySql
+    # Run MySql
+        mysql -u root -p
+    # Show database (inside MySql program)
+        (mysql>) show databases;
+    # Create database (inside MySql program)
+        (mysql>) create database <database_name>;
+    # Use database (inside MySql program)
+        (mysql>) use <database_name>;
+    # Create table (inside MySql program and under a database)
+        (mysql>) create table <table_name>(<column_name1> <type1>, <column_name2> <type2>, .....);
+    # show table (inside MySql program and under a database)
+        (mysql>) show tables
