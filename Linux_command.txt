@@ -2,3 +2,7 @@
 
 #Check os version
     cat /etc/os-release
+
+#Update and upgrade repository
+    #Debian, Ubuntu
+        apt-get update && apt-get upgrade

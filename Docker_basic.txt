@@ -1,11 +1,17 @@
 # Run a container
-    docker run --rm --name <container_name> -it <image_name>
-# Run a container in background with -d
-    docker run --rm -d --name <container_name> -it <image_name> 
-        
+    # Normal
+        docker run --rm --name <container_name> -it <image_name>
+    # Run in background
+        docker run --rm -d --name <container_name> -it <image_name> 
+
+# Stop a container
+    docker stop <container_id_or_name>
 
 # Run command shell in a container
-    docker exec -it <container_id_or_name> /bin/bash
+    # Debian, Ubuntu
+        docker exec -it <container_id_or_name> /bin/bash
+
+
 
 # Note;
 # container_id = id for container
