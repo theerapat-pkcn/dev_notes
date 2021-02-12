@@ -14,6 +14,21 @@
         docker exec -it <container_id_or_name> /bin/bash
         docker exec -it <container_id_or_name> bash
 
+# Copy file
+    # From container to host
+        docker cp <container_id_or_name>:<container_file_path> <host_folder_path>
+        # Example, copy test.txt at home folder to current host folder
+        docker cp d362659da5fc:/home/test.txt .
+    # From host to container
+        docker cp <host_file_path> <container_id_or_name>:<container_folder_path>
+
+# Docker-compose (inside folder contains docker-compose file)
+    # Run containers
+        docker-compose up -d
+    # Close containers
+        docker-compose down
+
+
 
 # Note;
 # container_id = id for container

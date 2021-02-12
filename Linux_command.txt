@@ -1,5 +1,8 @@
 # Basic command
 
+# Check ip address
+    ip a
+
 # Files
     # Create folder
         mkdir <folder_name>
