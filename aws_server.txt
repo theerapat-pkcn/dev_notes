@@ -1,0 +1,12 @@
+# Connect to EC2 instance via SSH (Local terminal)
+    1. Set private viewable for SSH for work for security
+        chmod 400 <aws_key_pair_file_path>
+        # Example (cd to file folder)
+        chmod 400 my_first_aws_key_pair.pem
+    2. Connect to instance using public DNS
+        # Ubuntu instance
+            ssh -i <aws_key_pair_file_path> ubuntu@<public_dns>
+            # Example
+            ssh -i /Users/theerapatsingprasert/Dev\ Projects/aws_key_pairs/my_first_aws_key_pair.pem ubuntu@ec2-18-224-136-49.us-east-2.compute.amazonaws.com
+        # AWS Linux
+            ssh -i <aws_key_pair_file_path> ec2-user@<public_dns>
