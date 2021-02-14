@@ -1,11 +1,54 @@
 # Basic command
 
+# Switch to root user
+    sudo su -
+
+# File permission
+    sudo chmod <permission_number> <file_path>
+    # Example 
+    sudo chmod 666 /var/run/docker.sock
+    # Permission numbers are:
+        0 = ---
+        1 = --x
+        2 = -w-
+        3 = -wx
+        4 = r-
+        5 = r-x
+        6 = rw-
+        7 = rwx
+
+# Change ownership and group
+    # Change file ownership
+        sudo chown <user_that_you_what_to_change> <file_name>
+    # Change file group
+        sudo chgrp <group_name> <file_name>
+
 # Check ip address
     ip a
+
+# Check listening port
+    # Ubuntu
+        sudo ss -tunlp
+
+# Check active username
+    who | awk '{print $1}' | sort
+
+# TOP
+    # Show memory usage
+        top
+    # Quit top command
+        q
+
+# Use Docker as non-root user by add to docker group
+# Need to get permission to docker.sock for docker group first
+    sudo groupadd docker
+    sudo usermod -aG docker <username>
 
 # Files
     # Create folder
         mkdir <folder_name>
+    # Create file
+        touch <file_name>
     # Remove file
         rm <file_name>
 
