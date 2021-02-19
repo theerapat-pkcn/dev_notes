@@ -1,5 +1,17 @@
 # To start new project (at project main folder)
-    pipenv install django
-    pipenv shell
-    # in environment CLI shell
-        django-admin startproject <projectname(be able the same as project folder name)>
+    1. Install Django and open shell
+        pipenv install django
+        pipenv shell
+    2. Create project (must be in environment CLI shell)
+        django-admin startproject <projectname(be able the same as project folder name)> .
+    3. Create 'static' folder at same level as manage.py
+    4. Create css, img, js folders inside static folder
+    5. Add this into settings.py
+        STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'static')]
+        STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
+    6. Create application
+        python3 manage.py startapp <app_name>
+    7. Create templates folder in appication folder
+    8. Add application template location to TEMPLATES.DIRS in settings.py
+    9. Repeat 6. if you need more app in the project
+    
