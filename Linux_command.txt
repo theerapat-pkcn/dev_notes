@@ -29,6 +29,10 @@
 # Check listening port
     # Ubuntu
         sudo ss -tunlp
+    # To see specific port
+        # Example
+        sudo netstat -tulpn | grep :443
+        sudo ss -tulpn | grep :443
 
 # Check active username
     who | awk '{print $1}' | sort
@@ -44,13 +48,17 @@
     sudo groupadd docker
     sudo usermod -aG docker <username>
 
-# Files
+# Files and folder
     # Create folder
         mkdir <folder_name>
     # Create file
         touch <file_name>
     # Remove file
         rm <file_name>
+    # Remove directory / folder
+        rm -r <folder_name>
+    # Remove all files and folders in current directory
+        rm -r *
 
 # Check os version
     cat /etc/os-release
@@ -99,3 +107,8 @@
         (mysql>) create table <table_name>(<column_name1> <type1>, <column_name2> <type2>, .....);
     # show table (inside MySql program and under a database)
         (mysql>) show tables
+
+# Nginx
+    # Start / Stop server
+        sudo service nginx Start
+        sudo service nginx stop

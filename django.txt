@@ -1,0 +1,5 @@
+# To start new project (at project main folder)
+    pipenv install django
+    pipenv shell
+    # in environment CLI shell
+        django-admin startproject <projectname(be able the same as project folder name)>
