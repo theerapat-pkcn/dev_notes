@@ -131,3 +131,11 @@
     # Start / Stop server
         sudo service nginx Start
         sudo service nginx stop
+
+# Git
+    # Switch branch
+        git switch <branch_name>
+    # Create branch and switch to new branch
+        git checkout -b <new_branch_name>
+    # See all branches
+        git branch -a
