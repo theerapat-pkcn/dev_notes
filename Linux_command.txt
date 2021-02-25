@@ -108,6 +108,25 @@
     # show table (inside MySql program and under a database)
         (mysql>) show tables
 
+# Postgresql (test in docker official container)
+    # Run
+        psql -U postgres
+    # list all database (inside postgres program)
+        \l
+    # Create database (inside postgres program)
+        create database <datbase_name>;
+    # Connect to database (inside postgres program)
+        \c <database_name>
+    # Show table in database (inside database)
+        \d
+    # Clear all data in a table
+        TRUNCATE <table_name>
+    # Reset <tablename>_id_seq
+        # Reset to start from 1
+        ALTER SEQUENCE <seq_id_name> RESTART;
+        # Update id number in table
+        UPDATE <table_name> SET id = DEFAULT;
+
 # Nginx
     # Start / Stop server
         sudo service nginx Start

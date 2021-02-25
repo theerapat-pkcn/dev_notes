@@ -1,5 +1,5 @@
 # To start new project (at project main folder)
-    1. Install Django and open shell
+    1. Install Django and get into shell
         pipenv install django
         pipenv shell
     2. Create project (must be in environment CLI shell)
@@ -11,7 +11,88 @@
         STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
     6. Create application
         python3 manage.py startapp <app_name>
-    7. Create templates folder in appication folder
-    8. Add application template location to TEMPLATES.DIRS in settings.py
-    9. Repeat 6. if you need more app in the project
+    7. Repeat 6. if you need more app in the project
+    8. Create templates folder
+        # There are 2 ways to create templates folder, one is at app-level and another is at project-level
+        # Django template loader will look for an app-level templates directory by default and then if we update 
+        # the DIRS setting it will also look for a project-level templates directory. 
+        # At app-level, to avoid namespace issues you need to repeat app name folder before templates folder
+            ├── example_project
+            │   ├── __init__.py
+            │   ├── settings.py
+            │   ├── urls.py
+            │   └── wsgi.py
+            |   └── pages
+            |      ├── __init__.py
+            │      ├── admin.py
+            │      ├── apps.py
+            │      ├── models.py
+            │      ├── tests.py
+            │      └── views.py
+            |      ├── templates
+            |          ├── pages
+            |              ├── home.html
+            └── manage.py
+        # As a Django projects grow in size it's often more convenient to have all the templates in one place
+        # At project-level update the 'DIRS' config under TEMPLATES in settings.py is required
+            ├── example_project
+            │   ├── __init__.py
+            │   ├── settings.py
+            │   ├── urls.py
+            │   └── wsgi.py
+            |   └── pages
+            |      ├── __init__.py
+            │      ├── admin.py
+            │      ├── apps.py
+            │      ├── models.py
+            │      ├── tests.py
+            │      └── views.py
+            ├── templates
+                ├── home.html
+            └── manage.py
+
+    9. Add application template location to TEMPLATES.DIRS in settings.py if templates locate at project level
+        'DIRS': ['templates/'],
+
+# Update or create table in model
+    1. in manage.py, add class and properties for model
+    2. Run migration command to let django khow that there are updates
+        python3 manage.py makemigrations <app_name>
+        python3 manage.py migrate <app_name>
+
+# Add new data to a table via manage.py shell
+    # Example (category is ForeignKey in this case)
+        from <app_name>.models import Book, Category
+        new_book = Book(name='Naruto เล่ม 1', price=35, category=Category.objects.get(name='Comic'))
+        new_book.save()
+        # or (for shorter)
+        from <app_name>.models import Book, Category
+        Book.objects.create(name='Naruto เล่ม 1', price=35, category=Category.objects.get(name='Comic'))
+
+# Add user to admin.py
+    # At admin.py register model to admin site
+        from <app_name>.models import <table_name>
+        admin.site.register(<table_name>)
+    # Run migration command without app_name
+        python3 manage.py migrate
+    # Create user as admin
+        python3 manage.py createsuperuser --username=admin
+    
+# Change app name
+    1. Rename the folder which is in your project root
+    2. Change any references to your app in their dependencies, i.e. the app's views.py, urls.py , 'manage.py' , and settings.py files.
+    3. Update database table 'django_content_type' with this command (tested in postgres)
+            UPDATE django_content_type SET app_label='<NewAppName>' WHERE app_label='<OldAppName>';
+        # Check the changed with this command
+            SELECT * FROM django_content_type;
+    4. Also if you have models, you will have to rename the model tables. For postgres use 
+            ALTER TABLE <oldAppName>_<modelName> RENAME TO <newAppName>_<modelName>;
+    5. (For Django >= 1.7) Update the django_migrations table
+            UPDATE django_migrations SET app='<NewAppName>' WHERE app='<OldAppName>'
+    6. If your models.py's Meta Class has app_name listed, make sure to rename that too
+    7. If you've namespaced your static or templates folders inside your app, you'll also need to rename those. For example, rename old_app/static/old_app to new_app/static/new_app.
+    8. For renaming django models, you'll need to change django_content_type.name entry in DB. For postgreSQL use 
+            UPDATE django_content_type SET name='<newModelName>' where name='<oldModelName>' AND app_label='<OldAppName>';
+
+    
     
