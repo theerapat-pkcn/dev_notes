@@ -124,8 +124,16 @@
     # Reset <tablename>_id_seq
         # Reset to start from 1
         ALTER SEQUENCE <seq_id_name> RESTART;
-        # Update id number in table
+        # Update id number in table (In this case, must be a empty table)
         UPDATE <table_name> SET id = DEFAULT;
+        # To update id with data inside, you need to transfer all data to another
+        #   and delete all data in old table. After that Update id with below command
+        #   and tra
+        CREATE TABLE <table_name>_tmp select * from <table_name>;
+        TRUNCATE TABLE <table_name>;
+        ALTER TABLE <table_name> AUTO_INCREMENT = 1;
+        INSERT INTO <table_name>(name) SELECT name FROM <table_name>_tmp ORDER BY id;
+        DROP TABLE <table_name>_tmp;
 
 # Nginx
     # Start / Stop server
