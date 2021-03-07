@@ -80,7 +80,7 @@
     
 # Change app name
     1. Rename the folder which is in your project root
-    2. Change any references to your app in their dependencies, i.e. the app's views.py, urls.py , 'manage.py' , and settings.py files.
+    2. Change any references to your app in their dependencies, i.e. the app's views.py, urls.py , manage.py, apps.py and settings.py files.
     3. Update database table 'django_content_type' with this command (tested in postgres)
             UPDATE django_content_type SET app_label='<NewAppName>' WHERE app_label='<OldAppName>';
         # Check the changed with this command
@@ -94,5 +94,20 @@
     8. For renaming django models, you'll need to change django_content_type.name entry in DB. For postgreSQL use 
             UPDATE django_content_type SET name='<newModelName>' where name='<oldModelName>' AND app_label='<OldAppName>';
 
-    
+# Add apps-level urls.py into project
+    1. in settings.py
+        ROOT_URLCONF = '<project_name>.urls'
+    2. Import include into project-level urls.py with this
+        from django.urls import include
+    3. Include path into project-level urls.py
+        ...
+        path('<any_name>/', include('<app_name>.urls')),
+        ...
+    4. In app-level urls.py call using this
+        urlpatterns = [
+            # Call by localhost:8000/<any_name>/
+            path('', <app_views>.<views_function>, name='<call_name>'),
+            # Call by localhost:8000/<any_name>/index
+            path('index', <app_views>.<views_function>, name='<call_name>'),
+        ]
     

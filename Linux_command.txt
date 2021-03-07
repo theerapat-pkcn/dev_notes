@@ -123,7 +123,7 @@
         TRUNCATE <table_name>
     # Reset <tablename>_id_seq
         # Reset to start from 1
-        ALTER SEQUENCE <seq_id_name> RESTART;
+        ALTER SEQUENCE <seq_id_name> RESTART WITH 1;
         # Update id number in table (In this case, must be a empty table)
         UPDATE <table_name> SET id = DEFAULT;
         # To update id with data inside, you need to transfer all data to another

@@ -1,0 +1,30 @@
+# Django 
+    # response.headers
+    {
+        'Content-Length': '', 
+        'Content-Type': 'text/plain', 
+        'Host': 'localhost:8000', 
+        'Connection': 'keep-alive', 
+        'Upgrade-Insecure-Requests': '1', 
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36', 
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 
+        'Sec-Fetch-Site': 'same-origin', 
+        'Sec-Fetch-Mode': 'navigate', 
+        'Sec-Fetch-User': '?1', 
+        'Sec-Fetch-Dest': 'document', 
+        'Referer': 'http://localhost:8000/app_test/?name=Comic', 
+        'Accept-Encoding': 'gzip, deflate, br', 
+        'Accept-Language': 'en-US,en;q=0.9'
+    }
+    # response.GET (data come with url path and transfer to QueryDict)
+    # Example: http://localhost:8000/app_test/?banana=yellow&name=ronaldo
+    <QueryDict: {
+        'banana': ['yellow'], 
+        'name': ['ronaldo']
+    }>
+    # response.POST (data come in request.body and transfer tonQueryDict)
+    # Example: http://localhost:8000/app_test/
+    <QueryDict: {
+        'csrfmiddlewaretoken': ['tS7lXFTUeeruuoD3IUffB0OBD8seXJb7BSAczGBDMihWgkgLt50oyJkE0XxDl3Yq'], 
+        'name': ['Horror']
+    }>
